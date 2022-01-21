@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	transportHTTP "github.com/skyetran/go-rest-api-course/internal/transport/http"
+	"net/http"
 )
 
 // App - the struct which contains things like pointers
@@ -17,7 +18,7 @@ func (app *App) Run() error {
 	handler := transportHTTP.NewHandler()
 	handler.SetupRoutes()
 
-	if err := http.ListernAndServe(":8080", handler.Router); err != nil {
+	if err := http.ListenAndServe(":8080", handler.Router); err != nil {
 		fmt.Println("Fail to set up server")
 		return err
 	}

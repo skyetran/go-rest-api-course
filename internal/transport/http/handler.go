@@ -2,8 +2,9 @@ package http
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 // Handler - stores pointer to our comments service
@@ -21,6 +22,6 @@ func (h *Handler) SetupRoutes() {
 	fmt.Println("Setting Up Routes")
 	h.Router = mux.NewRouter()
 	h.Router.HandleFunc("/api/health", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println(w, "I am alive")
+		fmt.Fprintf(w, "I am alive!")
 	})
 }
